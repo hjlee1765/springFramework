@@ -3,7 +3,7 @@ package me.whiteship.springdemo.aopProxy;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CellPhoneImpl implements CellPhone {
+public class EventServiceImpl implements EventService {
 
     @PerfLogging
     @Override
@@ -30,5 +30,10 @@ public class CellPhoneImpl implements CellPhone {
     @Override
     public void delete() {
         System.out.println("cellPhone delete");
+        try{
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

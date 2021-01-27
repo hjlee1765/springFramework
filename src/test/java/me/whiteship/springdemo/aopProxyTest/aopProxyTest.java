@@ -1,6 +1,6 @@
 package me.whiteship.springdemo.aopProxyTest;
 
-import me.whiteship.springdemo.aopProxy.CellPhone;
+import me.whiteship.springdemo.aopProxy.EventService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,13 +14,13 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 public class aopProxyTest {
 
     @Autowired
-    CellPhone cellPhone;
+    EventService eventService;
 
     @Test
     public void test(){
-        cellPhone.open();
-        cellPhone.close();
-        cellPhone.delete();
+        eventService.open();
+        eventService.close();
+        eventService.delete();
     }
 
 }

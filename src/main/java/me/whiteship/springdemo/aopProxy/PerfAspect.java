@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class PerfAspect {
 
     //@Around("execution") : point cut 을 정의함. (어디에 advice 를 적용해야 할 지)
-    @Around("execution(* me.whiteship..*.CellPhone.*(..))")
+    @Around("execution(* me.whiteship..*.EventService.*(..))")
     public Object logPerf(ProceedingJoinPoint pjp) throws Throwable {
         //ProceedingJoinPont : 적용해야 할 메서드 그 자체라 생각하면 편함.
 
@@ -23,6 +23,7 @@ public class PerfAspect {
         return retVal;
     }
 
+
     //어노테이션이 달린곳에 aspect 를 적용함.
     @Around("@annotation(PerfLogging)")
     public Object logPerfAnnotatio(ProceedingJoinPoint pjp) throws Throwable {
@@ -32,8 +33,9 @@ public class PerfAspect {
         return retVal;
     }
 
+
     //특정 빈에 aspect 를 적용함
-    @Around("bean(cellPhoneImpl)")
+    @Around("bean(eventServiceImpl)")
     public Object logPerfBean(ProceedingJoinPoint pjp) throws Throwable {
         long begin = System.currentTimeMillis();
         Object retVal = pjp.proceed();
@@ -41,8 +43,8 @@ public class PerfAspect {
         return retVal;
     }
 
-    //특정 빈의 모든 메서드 실행 이전에 aspect 적용함.
-    @Before("bean(cellPhoneImpl)")
+   //특정 빈의 모든 메서드 실행 이전에 aspect 적용함.
+    @Before("bean(eventServiceImpl)")
     public void logPerfBeanBefore(){
         System.out.println("hello");
     }

@@ -1,6 +1,6 @@
 package me.whiteship.springdemo.aopProxy;
 
-public interface CellPhone {
+public interface EventService {
 
     void open();
 
